@@ -35,11 +35,9 @@ const AppLayout = () => {
   }
   return (
     <Popover>
-      <div className="flex lg:flex-row flex-col h-[100vh] w-full relative ">
-        <div className="content h-[100%] w-[100%] lg:w-[100%]">
-          {user === null ? <p>Lorem please login first</p> : <Outlet />}
-        </div>
-        <div className="w-full hidden lg:w-[22%] lg:absolute lg:left-0  bg-slate-950 text-white lg:flex  py-8 lg:flex-col gap-12 items-center lg:h-[100vh] h-[10%]">
+      <div className="flex lg:flex-row flex-col h-[100vh] lg:h-[100vh] w-full lg:relative ">
+       
+        <div className="w-full hidden lg:w-[22%]  bg-slate-950 text-white lg:flex  py-8 lg:flex-col gap-12 items-center lg:h-[100vh] h-[10%]">
           <div className="flex gap-2 items-center">
             <img
               src={logosvg}
@@ -91,7 +89,7 @@ const AppLayout = () => {
             Post New Feed
           </div>
 
-          <PopoverTrigger className="w-full flex items-center justify-center">
+          <PopoverTrigger className=" hidden w-full lg:flex items-center justify-center">
             <div className=" flex gap-4 items-center justify-center w-4/5  cursor-pointer  rounded-3xl py-2 hover:bg-slate-400/40 hover:scale-105 transition">
               <UserCheck2Icon />
               <div className="flex justify-center flex-col">
@@ -142,7 +140,7 @@ const AppLayout = () => {
             </div>
           </PopoverContent>
         </div>
-        <div className="w-full lg:w-[22%] lg:absolute lg:left-0  bg-slate-950 text-white flex lg:hidden py-8 lg:flex-col gap-12 items-center lg:h-[100vh] h-[10%]">
+        <div className="w-full lg:w-[22%] fixed bottom-0 border border-white bg-slate-950 text-white flex lg:hidden py-8 lg:flex-col gap-12 items-center lg:h-[100vh] h-[10%]">
           <ul className="flex justify-center">
             <Link
               to="/"
@@ -174,12 +172,16 @@ const AppLayout = () => {
             >
               <Bookmark />
             </Link>
-            <PopoverTrigger className="w-full flex items-center justify-center">
-              <div className=" flex gap-4 items-center justify-center  cursor-pointer px-2  rounded-3xl py-2 hover:bg-slate-400/40 hover:scale-105 transition">
+            {/* <PopoverTrigger className="w-full lg:hidden flex items-center justify-center">
+              <div className=" flex gap-4 lg:hidden items-center justify-center  cursor-pointer px-2  rounded-3xl py-2 hover:bg-slate-400/40 hover:scale-105 transition">
                 <p className="text-xl font-extrabold">...</p>
               </div>
-            </PopoverTrigger>
+            </PopoverTrigger> */}
+            
           </ul>
+        </div>
+        <div className="content h-[100%] w-[100%] lg:w-[100%]  ">
+          {user === null ? <p>Lorem please login first</p> : <Outlet />}
         </div>
       </div>
     </Popover>

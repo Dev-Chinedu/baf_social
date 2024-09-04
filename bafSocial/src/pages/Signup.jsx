@@ -14,6 +14,8 @@ const Signup = () => {
   const [otp, setotp] = useState(""); // State to manage OTP input
   const [confirmPasswordMsg, setconfirmPasswordMsg] = useState(false);
   const [otpModal, setotpModal] = useState(false);
+  const [loading, setloading] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -26,6 +28,8 @@ const Signup = () => {
   // Handle form submission for signup
   function handleSubmit(e) {
     e.preventDefault();
+    setloading(true);
+
     if (
       userName === "" ||
       password === "" ||
@@ -54,8 +58,10 @@ const Signup = () => {
       .then(function (response) {
         setotpModal(true);
         toast(response.data.message);
+        setloading(false);
       })
       .catch(function (error) {
+        setloading(false);
         toast(error.response.data.message);
       });
   }
@@ -142,12 +148,17 @@ const Signup = () => {
               </p>
             )}
           </div>
+          {loading ? (
+        <p className="mt-12 bg-blue-500 text-white p-2 px-4 rounded-lg hover:bg-blue-300">
+          ...
+        </p>
+      ) : (
           <button
             onClick={handleSubmit}
             className="mt-6 bg-blue-500 text-white p-2 px-4 rounded-lg hover:bg-blue-300"
           >
             Sign Up
-          </button>
+          </button>)}
         </div>
       </form>
 
