@@ -36,8 +36,7 @@ const AppLayout = () => {
   return (
     <Popover>
       <div className="flex lg:flex-row flex-col h-[100vh] lg:h-[100vh] w-full lg:relative ">
-       
-        <div className="w-full hidden lg:w-[22%]  bg-slate-950 text-white lg:flex  py-8 lg:flex-col gap-12 items-center lg:h-[100vh] h-[10%]">
+        <div className="w-full hidden lg:w-[22%] fixed bg-slate-950 text-white lg:flex  py-8 lg:flex-col gap-12 items-center lg:h-[100vh] h-[10%]">
           <div className="flex gap-2 items-center">
             <img
               src={logosvg}
@@ -177,10 +176,9 @@ const AppLayout = () => {
                 <p className="text-xl font-extrabold">...</p>
               </div>
             </PopoverTrigger> */}
-            
           </ul>
         </div>
-        <div className="content h-[100%] w-[100%] lg:w-[100%]  ">
+        <div className="content h-[100%] w-[100%] lg:w-[78%] lg:absolute lg:right-0   ">
           {user === null ? <p>Lorem please login first</p> : <Outlet />}
         </div>
       </div>
